@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+
+  - repo: local
+    hooks:
+      - id: dotnet-format
+        name: dotnet format
+        language: system
+        entry: dotnet format "Function Delegate/Function Delegate.csproj" --verify-no-changes
+        pass_filenames: false
+        types: [c#]
