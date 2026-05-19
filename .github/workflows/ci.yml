@@ -15,7 +15,7 @@ jobs:
         run: |
           pip install --quiet detect-secrets
           detect-secrets scan --baseline .secrets.baseline
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Build
