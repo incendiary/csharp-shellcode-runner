@@ -5,10 +5,18 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        dotnet: ["6.0.x", "7.0.x", "8.0.x"]
     steps:
       - uses: actions/checkout@v4
+      - name: Detect-secrets baseline check
+        shell: bash
+        run: |
+          pip install --quiet detect-secrets
+          detect-secrets scan --baseline .secrets.baseline
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: ${{ matrix.dotnet }}
       - name: Build
         run: dotnet build "Function Delegate.sln"
