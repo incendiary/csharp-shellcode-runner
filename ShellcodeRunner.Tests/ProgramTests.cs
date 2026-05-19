@@ -1,3 +1,4 @@
+using Xunit;
 using ShellcodeRunner;
 
 namespace ShellcodeRunner.Tests;
