@@ -1,6 +1,6 @@
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ShellcodeRunner.Tests")]
-
 using System.Runtime.InteropServices;
+
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ShellcodeRunner.Tests")]
 
 namespace ShellcodeRunner
 {
