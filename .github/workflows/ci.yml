@@ -20,3 +20,15 @@ jobs:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Build
         run: dotnet build "Function Delegate.sln"
+
+  test:
+    name: Test
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Test
+        run: dotnet test "ShellcodeRunner.Tests/ShellcodeRunner.Tests.csproj" --configuration Release --verbosity normal
